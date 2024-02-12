@@ -7,12 +7,14 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import SelectInput from '@/Components/SelectInput.vue';
 
 const form = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
+    type: '',
     terms: false,
 });
 
@@ -83,6 +85,18 @@ const submit = () => {
                     autocomplete="new-password"
                 />
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+            <div>
+                <InputLabel for="type" value="tipo de Usuário" />
+                <SelectInput
+                    id="type"
+                    v-model="form.type"
+                    type="select"
+                    class="mt-1 block w-full"
+                    required
+                    autofocus
+                />
+                <InputError class="mt-2" :message="form.errors.type" />
             </div>
 
             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
