@@ -26,6 +26,7 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -36,7 +37,7 @@ Route::middleware([
     })->name('dashboard');
 
 // cliente
-    Route::get('cliente', [buyerController::class, 'index'])->name('cliente');
+    Route::get('cliente', [BuyerController::class, 'index'])->name('cliente');
 
 // vendedor
     Route::get('vendedor', [SellerController::class, 'index'])->name('vendedor');

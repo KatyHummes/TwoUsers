@@ -10,6 +10,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 defineProps({
     title: String,
+    user: Object,
 });
 
 const showingNavigationDropdown = ref(false);
@@ -25,6 +26,7 @@ const switchToTeam = (team) => {
 const logout = () => {
     router.post(route('logout'));
 };
+
 </script>
 
 <template>
@@ -52,12 +54,12 @@ const logout = () => {
                                     Dashboard
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="user.type === 'seller'">
                                 <NavLink :href="route('vendedor')" :active="route().current('vendedor')">
                                     vendedor
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="user.type === 'buyer'">
                                 <NavLink :href="route('cliente')" :active="route().current('cliente')">
                                     cliente
                                 </NavLink>

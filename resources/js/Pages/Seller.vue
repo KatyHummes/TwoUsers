@@ -1,9 +1,12 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
+const props = defineProps({
+    user: Object,
+});
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Dashboard" :user="user">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Área do Vendedor

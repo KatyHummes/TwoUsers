@@ -13,7 +13,11 @@ class SellerController extends Controller
         // dd($user->type);
 
         if ($user->type == "seller") {
-            return Inertia::render('Seller');
+            return Inertia::render('Seller',[
+                'user' => $user
+            ]);
+        }else{
+            return redirect('cliente');
         }
     }
 }

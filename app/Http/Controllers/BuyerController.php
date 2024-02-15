@@ -9,6 +9,12 @@ class buyerController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Buyer');
+        $user = auth()->user();
+        
+        if ($user->type == "buyer") {
+            return Inertia::render('Buyer');
+        }else{
+            return redirect('vendedor');
+        }
     }
 }
